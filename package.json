@@ -1,0 +1,36 @@
+{
+  "name": "ei-core-vs01",
+  "version": "1.2.1-fix17",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --runInBand",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
+    "migrate": "tsx src/infrastructure/migrate.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "ci:install": "npm install --no-audit --no-fund --ignore-scripts",
+    "ci:runtime": "npm run typecheck && npm test -- --runInBand --detectOpenHandles && npm run build",
+    "ci:db": "node scripts/ci-db-check.mjs",
+    "ci:http": "node scripts/ci-http-check.mjs",
+    "ci:static": "node scripts/ci-static-check.mjs"
+  },
+  "dependencies": {
+    "express": "5.1.0",
+    "pg": "8.16.3",
+    "uuid": "13.0.0",
+    "zod": "4.1.5"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.3",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.3.0",
+    "jest": "30.1.3",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=22.16.0 <23",
+    "npm": ">=10.9.0 <11"
+  }
+}

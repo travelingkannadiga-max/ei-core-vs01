@@ -1,0 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Audit = void 0;
+class Audit {
+    async log(c, bookingId, ctx) { if (ctx.actorType === 'AI_AGENT' && ctx.executedBy.startsWith('EI-06'))
+        throw new Error('AI cannot be authoritative executor'); await c.query(`INSERT INTO audit_logs(booking_id,actor_type,actor_id,initiated_by,authorized_by,executed_by,action,previous_state,new_state,request_id,trace_id,idempotency_key,reason,metadata) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`, [bookingId, ctx.actorType, ctx.actorId, ctx.initiatedBy ?? null, ctx.authorizedBy ?? null, ctx.executedBy, ctx.action, ctx.previousState ?? null, ctx.newState ?? null, ctx.requestId ?? null, ctx.traceId ?? null, ctx.idempotencyKey ?? null, ctx.reason ?? null, ctx.metadata ?? {}]); }
+}
+exports.Audit = Audit;

@@ -1,0 +1,14 @@
+DELETE FROM schema_migrations WHERE version='0001_initial_schema';
+DROP TABLE IF EXISTS sse_events;
+DROP TABLE IF EXISTS audit_logs;
+DROP TABLE IF EXISTS outbox_events;
+DROP TABLE IF EXISTS idempotency_records;
+DROP TABLE IF EXISTS refunds;
+DROP TABLE IF EXISTS payment_webhook_events;
+DROP TABLE IF EXISTS payment_operations;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS supplier_operations;
+DROP TABLE IF EXISTS booking_components;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS trips;
+DROP TABLE IF EXISTS schema_migrations;
